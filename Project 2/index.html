@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coffee Masters</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --brown-dark:   #1e0a00;
+      --brown-mid:    #3b1a08;
+      --brown-accent: #c37d16;
+      --brown-hover:  #a8650f;
+      --bg-warm:      #f5f0eb;
+      --white:        #ffffff;
+      --border:       #c0a882;
+      --text-dark:    #2c1a0e;
+      --text-muted:   #888888;
+      --label-color:  crimson;
+      --shadow:       0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--bg-warm);
+      margin: 0;
+      padding: 0;
+      color: var(--text-dark);
+    }
+
+    .header {
+      background: var(--brown-dark);
+      color: var(--white);
+      height: 50px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      padding: 0 20px;
+    }
+
+    .panel {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+    /* Left Column — Order Items */
+    .order-item {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      padding: 12px 0;
+    }
+
+    .item-checkbox {
+      margin-right: 12px;
+    }
+
+    .item-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .item-name {
+      font-weight: 700;
+    }
+
+    .item-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .item-price {
+      margin-left: auto;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    /* Order Summary */
+    .order-summary {
+      border-top: 1px solid #ccc;
+      margin-top: 16px;
+      padding-top: 12px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .summary-row.tax {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .summary-row.total {
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .place-order-btn {
+      width: 100%;
+      background: var(--brown-accent);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 700;
+      margin-top: 16px;
+      cursor: pointer;
+    }
+
+    .place-order-btn:hover {
+      background: var(--brown-hover);
+    }
+
+    /* Right Column — Form Panel */
+    .section-heading {
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--text-dark);
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 6px;
+      margin-bottom: 14px;
+      margin-top: 0;
+    }
+
+    .input-group {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 16px;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      font-size: 14px;
+      font-family: 'Open Sans', sans-serif;
+      box-shadow: var(--shadow);
+      box-sizing: border-box;
+      outline: none;
+    }
+
+    .input-label {
+      position: absolute;
+      top: -8px;
+      left: 12px;
+      background: var(--white);
+      font-size: 11px;
+      color: var(--label-color);
+      padding: 0 4px;
+      font-weight: 700;
+    }
+
+    .payment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    ☕ Coffee Masters
+  </header>
+
+  <div class="container">
+    
+    <!-- Order Panel -->
+    <div class="panel">
+      <div class="order-item">
+        <input type="checkbox" class="item-checkbox" checked />
+        <div class="item-details">
+          <span class="item-name">Cappuccino</span>
+          <span class="item-desc">Citra Blend</span>
+        </div>
+        <span class="item-price">$5.35</span>
+      </div>
+
+      <div class="order-item">
+        <input type="checkbox" class="item-checkbox" checked />
+        <div class="item-details">
+          <span class="item-name">Cappuccino</span>
+          <span class="item-desc">Las Lajas<br/>Double espresso</span>
+        </div>
+        <span class="item-price">$5.85</span>
+      </div>
+
+      <div class="order-item">
+        <input type="checkbox" class="item-checkbox" checked />
+        <div class="item-details">
+          <span class="item-name">Croissant</span>
+          <span class="item-desc">Butter</span>
+        </div>
+        <span class="item-price">$2.45</span>
+      </div>
+
+      <div class="order-summary">
+        <div class="summary-row">
+          <span>Subtotal:</span>
+          <span>$13.65</span>
+        </div>
+        <div class="summary-row tax">
+          <span>Tax:</span>
+          <span>$1.02</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total:</span>
+          <span>$10.47</span>
+        </div>
+      </div>
+
+      <button class="place-order-btn">Place Order</button>
+    </div>
+
+    <!-- Form Panel -->
+    <div class="panel">
+      <div class="section-heading">NAME</div>
+      <div class="input-group">
+        <label for="name" class="input-label">Name for Order</label>
+        <input type="text" id="name" class="input-field" placeholder="Font Prefect"/>
+      </div>
+
+      <div class="section-heading">PAYMENT</div>
+      <div class="input-group">
+        <label for="card" class="input-label">Card Number</label>
+        <input type="text" id="card" class="input-field" placeholder="1234 5678 9012 3456" maxlength="19"/>
+      </div>
+
+      <div class="payment-grid">
+        <div class="input-group">
+          <label for="exp" class="input-label">Expiration</label>
+          <input type="text" id="exp" class="input-field" placeholder="MM/YY" maxlength="5"/>
+        </div>
+        <div class="input-group">
+          <label for="cvv" class="input-label">CVV</label>
+          <input type="text" id="cvv" class="input-field" placeholder="001" maxlength="3"/>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
