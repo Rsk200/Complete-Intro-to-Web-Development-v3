@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Word Masters</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <button id="btn-help" aria-label="How to Play" class="header-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" fill="currentColor">
+                <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/>
+            </svg>
+        </button>
+        <h1 id="title">Word Masters</h1>
+        <button id="theme-toggle" aria-label="Toggle Theme" class="header-btn">
+            <svg id="theme-icon-dark" class="icon-dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+            </svg>
+            <svg id="theme-icon-light" class="icon-light" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18.75a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-1.5a.75.75 0 01.75-.75zM6.166 17.834a.75.75 0 00-1.06 1.06l1.59 1.591a.75.75 0 101.06-1.061l-1.591-1.59zM2.25 12a.75.75 0 01.75-.75H5.25a.75.75 0 010 1.5H3a.75.75 0 01-.75-.75zM5.106 6.166a.75.75 0 001.06-1.06L4.576 3.515a.75.75 0 10-1.06 1.061l1.59 1.59z"></path>
+            </svg>
+        </button>
+    </header>
+    
+    <main>
+        <div id="announcement" aria-live="polite" class="sr-only"></div>
+        <div id="message-container"></div>
+        <div id="loading-spinner" class="dot-flashing"></div>
+
+        <div id="hint-container" class="hidden">
+            <button id="btn-hint" aria-label="Use Hint">💡 Hint</button>
+            <div id="hint-label">Free hint available</div>
+        </div>
+
+        <div id="game-board" class="hidden"></div>
+        
+        <div id="keyboard" class="hidden">
+            <div class="keyboard-row">
+                <button data-key="q">Q</button>
+                <button data-key="w">W</button>
+                <button data-key="e">E</button>
+                <button data-key="r">R</button>
+                <button data-key="t">T</button>
+                <button data-key="y">Y</button>
+                <button data-key="u">U</button>
+                <button data-key="i">I</button>
+                <button data-key="o">O</button>
+                <button data-key="p">P</button>
+            </div>
+            <div class="keyboard-row">
+                <div class="spacer half"></div>
+                <button data-key="a">A</button>
+                <button data-key="s">S</button>
+                <button data-key="d">D</button>
+                <button data-key="f">F</button>
+                <button data-key="g">G</button>
+                <button data-key="h">H</button>
+                <button data-key="j">J</button>
+                <button data-key="k">K</button>
+                <button data-key="l">L</button>
+                <div class="spacer half"></div>
+            </div>
+            <div class="keyboard-row">
+                <button data-key="Enter" class="wide">ENTER</button>
+                <button data-key="z">Z</button>
+                <button data-key="x">X</button>
+                <button data-key="c">C</button>
+                <button data-key="v">V</button>
+                <button data-key="b">B</button>
+                <button data-key="n">N</button>
+                <button data-key="m">M</button>
+                <button data-key="Backspace" class="wide">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" fill="currentColor">
+                        <path d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H7.07L2.4 12l4.66-7H22v14zm-11.59-2L14 13.41 17.59 17 19 15.59 15.41 12 19 8.41 17.59 7 14 10.59 10.41 7 9 8.41 12.59 12 9 15.59z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Confirmation Dialog -->
+    <div id="confirm-dialog" class="hidden">
+        <div class="dialog-content">
+            <p id="confirm-msg">This is your last guess — use hint anyway?</p>
+            <div class="dialog-buttons">
+                <button id="btn-confirm-yes">Confirm</button>
+                <button id="btn-confirm-no">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="help-modal" class="hidden modal-overlay" role="dialog" aria-modal="true" aria-labelledby="help-title" tabindex="-1">
+        <div class="modal-content help-content">
+            <button id="btn-close-help" aria-label="Close" class="modal-close">&times;</button>
+            <h2 id="help-title">How To Play</h2>
+            <p>Guess the WORD in 6 tries.</p>
+            
+            <div class="example">
+                <div class="row example-row">
+                    <div class="tile correct">C</div>
+                    <div class="tile">R</div>
+                    <div class="tile">A</div>
+                    <div class="tile">N</div>
+                    <div class="tile">E</div>
+                </div>
+                <p><strong>C</strong> is in the word and in the correct spot.</p>
+            </div>
+
+            <div class="example">
+                <div class="row example-row">
+                    <div class="tile">P</div>
+                    <div class="tile present">I</div>
+                    <div class="tile">L</div>
+                    <div class="tile">L</div>
+                    <div class="tile">S</div>
+                </div>
+                <p><strong>I</strong> is in the word but in the wrong spot.</p>
+            </div>
+
+            <div class="example">
+                <div class="row example-row">
+                    <div class="tile">V</div>
+                    <div class="tile">A</div>
+                    <div class="tile">G</div>
+                    <div class="tile absent">U</div>
+                    <div class="tile">E</div>
+                </div>
+                <p><strong>U</strong> is not in the word in any spot.</p>
+            </div>
+            
+            <div class="hint-explanation">
+                <p><strong>Stuck?</strong> Use a hint to reveal one correct letter. Your first hint is free — each additional hint costs you one guess.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
