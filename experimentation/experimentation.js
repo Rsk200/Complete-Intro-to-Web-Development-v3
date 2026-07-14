@@ -1,16 +1,16 @@
 // Function to repeat a character a given number of times
 function repeatCharacter(character, timesToRepeat) {
-  // We start with an empty string
-  let result = ""; 
-  
-  // A loop that runs 'timesToRepeat' times
-  for (let i = 0; i < timesToRepeat; i++) {
-    // Add the character to our result each time
-    result = result + character; 
-  }
-  
-  // Print the final result to the console
-  console.log(result); 
+    // We start with an empty string
+    let result = "";
+
+    // A loop that runs 'timesToRepeat' times
+    for (let i = 0; i < timesToRepeat; i++) {
+        // Add the character to our result each time
+        result = result + character;
+    }
+
+    // Print the final result to the console
+    console.log(result);
 }
 
 // ---------------------------------------------------------
